@@ -2,41 +2,30 @@
 #include <string.h>
 #include "copy.h"
 
-typedef struct{
-	char text[MAXLINE];
-	int length;
-}Line;
+char line[MAXLINE];
+char lines[NUM][MAXLINE];
 
 int main(){
-	Line lines[MAX_LINE];
-	int num	= 0;
-	char input[MAXLINE];
-
-	while(fgets(input, sizeof(input), stdin) != NULL) {
-		if(input[0] == "\n"){
-			break;
-		}
-		int i;
-		for(i = 0; input[i] != '\0'; i++){
-			lines[num].text[i] = input[i];
-		}
-		lines[num].text[i] = '\0';
-		lines[num].length = i;
-		num++;
+	int i, j;
+	i = 0;
+	while (i < NUM && fgets(line, MAXLINE, stdin) != NULL) {	
+		copy(line, lines[i]);
+		i++;
 	}
 
-	for(int i = 0; i < num; i++){
-		for(int j = i + 1; j < num; j++){
-			if(lines[i].length < lines[j].length){
-				Line temp = lines[i];
-				lines[i] = lines[j];
-				lines[j] = temp;
-			}
-		}
+	for(i = 0; i < NUM; i++){
+	       for(j = i + 1; j < NUM; j++){
+		       if(strlen(lines[i]) < strlen(lines[j])){
+			       char temp[MAXLINE];
+			       copy(lines[i], temp);
+			       copy(lines[j], lines[i]);
+			       copy(temp, lines[j]);
+		       }
+	       }
 	}
 
-	for(int i = 0; i < num; i++){
-		printf("%s", lines[i].text);
+	for(i = 0; i < NUM; i++){
+		printf("%s", lines[i]);
 	}
 	return 0;
 }
