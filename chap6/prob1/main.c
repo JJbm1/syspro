@@ -14,13 +14,13 @@ int main(int argc, char *argv[]){
 			continue;
 		}
 
-		if(S_ISREG(buf.st_mode)) printf("%s \n", "일반 파일");
-		if(S_ISDIR(buf.st_mode)) printf("%s \n", "디렉터리");
-	        if(S_ISCHR(buf.st_mode)) printf("%s \n", "문자 장치 파일");
-		if(S_ISBLK(buf.st_mode)) printf("%s \n", "블록 장치 파일");
-		if(S_ISFIFO(buf.st_mode)) printf("%s \n", "FIFO 파일");
-		if(S_ISLNK(buf.st_mode)) printf("%s \n", "심볼릭 링크");
-		if(S_ISSOCK(buf.st_mode)) printf("%s \n", "소켓");
+		if(S_ISREG(buf.st_mode)) printf("%s \n", "File");
+		if(S_ISDIR(buf.st_mode)) printf("%s \n", "Directory");
+	        if(S_ISCHR(buf.st_mode)) printf("%s \n", "Text Device File");
+		if(S_ISBLK(buf.st_mode)) printf("%s \n", "Block Device File");
+		if(S_ISFIFO(buf.st_mode)) printf("%s \n", "FIFO File");
+		if(S_ISLNK(buf.st_mode)) printf("%s \n", "Symbolic Link");
+		if(S_ISSOCK(buf.st_mode)) printf("%s \n", "Socket");
 	}
 	exit(0);
 }	
