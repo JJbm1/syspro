@@ -2,8 +2,7 @@
 #include<stdio.h>
 #include <errno.h>
 
-int main()
-{
+int main(){
     int status;
     if ((status = system("date")) < 0)
         perror("system() error");
