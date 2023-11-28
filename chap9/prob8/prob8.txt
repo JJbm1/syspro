@@ -1,5 +1,5 @@
 (echo START1; sleep 10; echo DONE1) & 
-- (echo START1; sleep 10; echo DONE1) & 명령을 실행하면 “START1”이 즉시 출력이 되고 프로세스는 10초 동안 sleep 상태에 들어갑니다.
+- (echo START1; sleep 10; echo DONE1) & 명령을 실행하면 “START1”이 즉시 출력이 되고 프로세스는 백그라운드에서 10초 동안 sleep 상태에 들어갑니다.
 
 (echo START2; sleep 10; echo DONE2) &
 - (echo START2; sleep 10; echo DONE2) & 명령을 실행하면 “START2”이 즉시 출력이 되고 이 프로세스도 백그라운드에서 10초 동안 sleep 상태에 들어갑니다.
