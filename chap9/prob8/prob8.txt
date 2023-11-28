@@ -1,0 +1,16 @@
+(echo START1; sleep 10; echo DONE1) & 
+- (echo START1; sleep 10; echo DONE1) & 명령을 실행하면 “START1”이 즉시 출력이 되고 프로세스는 10초 동안 sleep 상태에 들어갑니다.
+
+(echo START2; sleep 10; echo DONE2) &
+- (echo START2; sleep 10; echo DONE2) & 명령을 실행하면 “START2”이 즉시 출력이 되고 이 프로세스도 백그라운드에서 10초 동안 sleep 상태에 들어갑니다.
+
+kill –KILL %1
+- kill –KILL %1 명령을 실행하면 첫 번째 백그라운드 작업이 즉시 종료됩니다.
+ 프로세스가 종료되면서 echo DONE1 명령이 실행되지 않아서 DONE1이 출력되지 않습니 다.
+
+kill -STOP %1
+- kill –STOP %1 명령은 백그라운드 작업을 일시 중지하는 명령입니다. 
+  kill –STOP 명령을 실행하려고 하지만 이미 첫 번째 프로세스가 종료되어서 "-bash: kill: (564) - No such process"라는 오류 메시지가 출력됩니다.
+
+kill -CONT %1
+- kill –CONT %1 명령은 일시 중지된 백그라운드 작업을 재개합니다. kill –CONT 명령을 실행하려고 하지만 이것도 첫 번째 프로세스가 이미 종료되어서 "-bash: kill: %1: no such job"라는 오류 메시지가 출력됩니다.
