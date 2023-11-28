@@ -20,7 +20,7 @@ int main() {
             exit(0);
         }
 
-        input[strlen(input) - 1] = '\0'; // Remove newline at the end
+        input[strlen(input) - 1] = '\0';
 
         int i = 0;
         background = 0;
@@ -42,19 +42,19 @@ int main() {
             exit(1);
         }
 
-        if (pid == 0) { // Child process
+        if (pid == 0) {
             if (execvp(args[0], args) < 0) {
                 exit(1);
             }
-        } else { // Parent process
+        } else {
             printf("[%d] Parent process start\n", getpid());
             if (background) {
                 printf("[%d] child process start\n", pid);
-                sleep(1);  // Delay to ensure child process output appears after this line
+                sleep(1);
             }
             int status;
             waitpid(pid, &status, 0);
-            if(WIFEXITED(status) && WEXITSTATUS(status) != 0) { // Check if child process exited due to an error
+            if(WIFEXITED(status) && WEXITSTATUS(status) != 0) {
                 printf("Parent process end\n");
                 printf("Exit\n");
                 exit(1);
